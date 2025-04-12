@@ -109,8 +109,10 @@
             background-image: url('https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
             height: 100vh;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -175,6 +177,38 @@
             }
             60% {
                 transform: translateY(-15px) translateX(-50%);
+            }
+        }
+        
+        /* Mobile improvements for hero section */
+        @media (max-width: 767px) {
+            .hero-section {
+                background-attachment: scroll;
+                background-position: center center;
+                height: 100vh;
+                min-height: 500px;
+                width: 100%;
+            }
+            
+            /* Ensure proper overlay for mobile */
+            .hero-section::after {
+                width: 100%;
+                position: absolute;
+                height: 100%;
+            }
+            
+            /* Fix for iOS Safari */
+            @supports (-webkit-touch-callout: none) {
+                .hero-section {
+                    background-attachment: scroll;
+                }
+            }
+        }
+        
+        /* Small phone optimization for hero */
+        @media (max-width: 375px) {
+            .hero-section {
+                min-height: 450px;
             }
         }
         
